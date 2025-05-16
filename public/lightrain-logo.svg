@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Raindrop shape -->
+  <path d="M30 5C30 5 40 15 40 25C40 35 30 45 30 45C30 45 20 35 20 25C20 15 30 5 30 5Z" fill="#E53E3E"/>
+  
+  <!-- Text -->
+  <text x="50" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">
+    LightRain
+  </text>
+</svg> 

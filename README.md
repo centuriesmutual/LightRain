@@ -1,30 +1,30 @@
-# Light Rain - Real Estate Tokenization Platform
+# LightRain - Real Estate Tokenization Platform
 
-Light Rain is a modern real estate tokenization platform built on Solana, allowing users to invest in tokenized real estate by zip code and community designations. The platform focuses on hospitality and residential market trends, providing a seamless investment experience similar to Robinhood and Airbnb.
+LightRain is a modern web platform that enables users to invest in premium real estate properties through blockchain technology. The platform features a Netflix-inspired UI design with a focus on user experience and property visualization.
 
 ## Features
 
-- Tokenized real estate investments by zip code
-- Hospitality-focused market analysis
-- Real-time rental and mortgage trend data
-- Solana blockchain integration
-- Modern, user-friendly interface
-- Secure wallet connection
+- Netflix-style homepage with horizontal scrolling property categories
+- Detailed property pages with image galleries and market trends
+- User authentication and profile management
+- Responsive design with modern UI components
+- Interactive property cards with hover effects
+- Dark theme optimized for property showcase
+
+## Tech Stack
+
+- Next.js
+- React
+- Chakra UI
+- Framer Motion
+- TypeScript
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or later)
-- npm or yarn
-- Solana wallet (Phantom recommended)
-
-### Installation
-
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/light-rain.git
-cd light-rain
+git clone https://github.com/yourusername/LightRain.git
+cd LightRain
 ```
 
 2. Install dependencies:
@@ -43,17 +43,20 @@ yarn dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Technology Stack
+## Project Structure
 
-- Next.js
-- React
-- Chakra UI
-- Solana Web3.js
-- Solana Wallet Adapter
+- `/pages` - Next.js pages and routing
+- `/public` - Static assets
+- `/components` - Reusable React components
+- `/styles` - Global styles and theme configuration
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
