@@ -1,5 +1,5 @@
-import { Box, Container, Heading, Text, Button, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider } from '@chakra-ui/react';
-import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+import { Box, Container, Heading, Text, Button, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Link } from '@chakra-ui/react';
+import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -11,31 +11,31 @@ const contentRows = [
   {
     title: "Popular on LightRain",
     items: [
-      { id: 1, title: "Luxury Villa", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800", description: "Premium beachfront property" },
-      { id: 2, title: "City Penthouse", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Downtown luxury living" },
-      { id: 3, title: "Mountain Estate", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Scenic mountain retreat" },
-      { id: 4, title: "Modern Apartment", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800", description: "Contemporary urban living" },
-      { id: 5, title: "Historic Mansion", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Classic architecture" },
+      { id: 1, title: "Beverly Hills", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Premium beachfront property" },
+      { id: 2, title: "Manhattan", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Downtown luxury living" },
+      { id: 3, title: "Aspen", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Scenic mountain retreat" },
+      { id: 4, title: "San Francisco", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800", description: "Contemporary urban living" },
+      { id: 5, title: "Miami", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Classic architecture" },
     ]
   },
   {
     title: "Trending Now",
     items: [
-      { id: 6, title: "Waterfront Condo", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", description: "Ocean view luxury" },
-      { id: 7, title: "Smart Home", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800", description: "Tech-integrated living" },
-      { id: 8, title: "Garden Villa", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Nature-inspired design" },
-      { id: 9, title: "Sky Tower", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Urban high-rise living" },
-      { id: 10, title: "Eco House", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Sustainable living" },
+      { id: 6, title: "Seattle", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", description: "Ocean view luxury" },
+      { id: 7, title: "Austin", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800", description: "Tech-integrated living" },
+      { id: 8, title: "Denver", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Nature-inspired design" },
+      { id: 9, title: "Chicago", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Urban high-rise living" },
+      { id: 10, title: "Portland", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Sustainable living" },
     ]
   },
   {
     title: "New Listings",
     items: [
-      { id: 11, title: "Beach House", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", description: "Seaside paradise" },
-      { id: 12, title: "Urban Loft", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800", description: "Modern city living" },
-      { id: 13, title: "Country Estate", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Rural luxury" },
-      { id: 14, title: "Tech Villa", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800", description: "Smart living" },
-      { id: 15, title: "Mountain View", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Panoramic views" },
+      { id: 11, title: "Los Angeles", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", description: "Seaside paradise" },
+      { id: 12, title: "Boston", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800", description: "Modern city living" },
+      { id: 13, title: "Nashville", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Rural luxury" },
+      { id: 14, title: "Las Vegas", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800", description: "Smart living" },
+      { id: 15, title: "Phoenix", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Panoramic views" },
     ]
   }
 ];
@@ -183,45 +183,52 @@ export default function Home() {
         }}
       >
         <Container maxW="container.xl" position="relative" zIndex={2} h="100%" display="flex" alignItems="center">
-          <VStack spacing={6} align="start" maxW="600px">
-            <Heading
-              as="h1"
-              size="4xl"
-              fontWeight="bold"
-              lineHeight="1.2"
-              textShadow="2px 2px 4px rgba(0,0,0,0.5)"
-            >
-              Tokenize Your Dream Property
-            </Heading>
-            <Text fontSize="xl" color="gray.300" textShadow="1px 1px 2px rgba(0,0,0,0.5)">
-              Invest in premium real estate through blockchain technology. Own a piece of the world's most prestigious locations.
-            </Text>
-            <HStack spacing={4}>
-              <Button
-                size="lg"
-                leftIcon={<FaUser />}
-                bg="red.600"
-                color="white"
-                _hover={{ bg: 'red.500' }}
-                onClick={() => router.push('/signup')}
-                px={8}
+          <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center" w="100%">
+            {/* Left Section */}
+            <VStack spacing={6} align="start" maxW="600px">
+              {/* Image removed */}
+            </VStack>
+            {/* Right Section */}
+            <VStack spacing={6} align="start" maxW="600px">
+              <Heading
+                as="h2"
+                size="3xl"
+                fontWeight="bold"
+                lineHeight="1.2"
+                textShadow="2px 2px 4px rgba(0,0,0,0.5)"
               >
-                Sign Up
-              </Button>
-              <Button
-                size="lg"
-                leftIcon={<FaInfoCircle />}
-                variant="outline"
-                borderColor="whiteAlpha.400"
-                color="white"
-                _hover={{ bg: 'whiteAlpha.200', borderColor: 'white' }}
-                onClick={() => router.push('/about')}
-                px={8}
-              >
-                Learn More
-              </Button>
-            </HStack>
-          </VStack>
+                Earn Solana
+              </Heading>
+              <Text fontSize="xl" color="gray.300" textShadow="1px 1px 2px rgba(0,0,0,0.5)">
+                Fast, secure, and travel tokenization on Solana.
+              </Text>
+              <HStack spacing={4}>
+                <Button
+                  size="lg"
+                  leftIcon={<FaChartLine />}
+                  bg="blue.600"
+                  color="white"
+                  _hover={{ bg: 'blue.500' }}
+                  onClick={() => router.push('/dashboard')}
+                  px={8}
+                >
+                  Markets
+                </Button>
+                <Button
+                  size="lg"
+                  leftIcon={<FaPlane />}
+                  variant="outline"
+                  borderColor="whiteAlpha.400"
+                  color="white"
+                  _hover={{ bg: 'whiteAlpha.200', borderColor: 'white' }}
+                  onClick={() => router.push('/technology')}
+                  px={8}
+                >
+                  Travel
+                </Button>
+              </HStack>
+            </VStack>
+          </Flex>
         </Container>
       </Box>
 
@@ -310,6 +317,48 @@ export default function Home() {
             </Container>
           </Box>
         ))}
+      </Box>
+      {/* Footer */}
+      <Box as="footer" bgGradient="linear(to-r, #1a1a1a, #232526 80%)" color="gray.300" py={12} mt={16} borderTopWidth="2px" borderColor="gray.300" boxShadow="0 -4px 24px 0 rgba(212,175,55,0.08)">
+        <Container maxW="container.xl">
+          <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align={{ base: 'flex-start', md: 'center' }} gap={12}>
+            {/* About & Brand */}
+            <VStack align="flex-start" spacing={4} maxW="340px">
+              <Heading size="md" color="gray.300" fontFamily="serif">LightRain</Heading>
+              <Link href="/about" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>About</Link>
+              <Link href="/whitepaper" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Whitepaper</Link>
+              <Link href="/tokenomics" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Tokenomics</Link>
+              <Link href="/governance" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Governance</Link>
+            </VStack>
+            {/* Investment Security */}
+            <VStack align="flex-start" spacing={2} maxW="260px">
+              <Heading size="sm" color="gray.300" fontFamily="serif">Investment Security</Heading>
+              <Link href="/security" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Security</Link>
+            </VStack>
+            {/* Technology */}
+            <VStack align="flex-start" spacing={2} maxW="260px">
+              <Heading size="sm" color="gray.300" fontFamily="serif">Cutting-Edge Technology</Heading>
+              <Link href="/technology" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Technology</Link>
+            </VStack>
+            {/* Regulatory Compliance */}
+            <VStack align="flex-start" spacing={2} maxW="260px">
+              <Heading size="sm" color="gray.300" fontFamily="serif">Regulatory Compliance</Heading>
+              <Link href="/compliance" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Compliance</Link>
+            </VStack>
+            {/* Contact */}
+            <VStack align="flex-start" spacing={2} maxW="220px">
+              <Heading size="sm" color="gray.300" fontFamily="serif">Contact</Heading>
+              <Link href="mailto:invest@lightrain.com" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Email</Link>
+              <Link href="tel:+442012345678" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Phone</Link>
+              <Text color="gray.300" fontSize="sm">London, UK</Text>
+            </VStack>
+          </Flex>
+          <Box mt={10} borderTopWidth="1px" borderColor="gray.300" pt={6} textAlign="center">
+            <Text color="gray.500" fontSize="xs">
+              © {new Date().getFullYear()} LightRain. All rights reserved. This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Investments are subject to risk, including loss of principal. Please consult your financial advisor before investing.
+            </Text>
+          </Box>
+        </Container>
       </Box>
     </Box>
   );

@@ -7,6 +7,7 @@ import { clusterApiUrl } from '@solana/web3.js';
 import { useMemo } from 'react';
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { AppProps } from 'next/app';
+import { Analytics } from '@vercel/analytics/react';
 
 const theme = extendTheme({
   colors: {
@@ -74,6 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
+      <Analytics />
     </ChakraProvider>
   );
 }
