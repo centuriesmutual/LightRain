@@ -1,78 +1,73 @@
-import { Box, Container, Heading, Text, Button, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Link } from '@chakra-ui/react';
-import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane } from 'react-icons/fa';
+import { Box, Container, Heading, Text, Button, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Grid } from '@chakra-ui/react';
+import Link from 'next/link';
+import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane, FaCoins, FaMobile, FaUserCircle, FaCloudRain } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const MotionBox = motion(Box);
 
-// Sample content data
-const contentRows = [
-  {
-    title: "Popular on LightRain",
-    items: [
-      { id: 1, title: "Beverly Hills", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Premium beachfront property" },
-      { id: 2, title: "Manhattan", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Downtown luxury living" },
-      { id: 3, title: "Aspen", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Scenic mountain retreat" },
-      { id: 4, title: "San Francisco", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800", description: "Contemporary urban living" },
-      { id: 5, title: "Miami", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Classic architecture" },
-    ]
-  },
-  {
-    title: "Trending Now",
-    items: [
-      { id: 6, title: "Seattle", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", description: "Ocean view luxury" },
-      { id: 7, title: "Austin", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800", description: "Tech-integrated living" },
-      { id: 8, title: "Denver", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Nature-inspired design" },
-      { id: 9, title: "Chicago", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Urban high-rise living" },
-      { id: 10, title: "Portland", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Sustainable living" },
-    ]
-  },
-  {
-    title: "New Listings",
-    items: [
-      { id: 11, title: "Los Angeles", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800", description: "Seaside paradise" },
-      { id: 12, title: "Boston", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800", description: "Modern city living" },
-      { id: 13, title: "Nashville", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Rural luxury" },
-      { id: 14, title: "Las Vegas", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800", description: "Smart living" },
-      { id: 15, title: "Phoenix", image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800", description: "Panoramic views" },
-    ]
-  }
-];
+// Content rows removed as requested
 
 export default function Home() {
   const router = useRouter();
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        setIsHeaderVisible(false);
+      } else {
+        // Scrolling up
+        setIsHeaderVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   return (
     <Box bg="black" minH="100vh" color="white">
       {/* Navigation Bar */}
       <Box
         position="fixed"
-        top={0}
+        top={isHeaderVisible ? 0 : -100}
         left={0}
         right={0}
         zIndex={1000}
         bg="rgba(0,0,0,0.8)"
         backdropFilter="blur(10px)"
-        transition="all 0.3s"
+        transition="all 0.3s ease-in-out"
         _hover={{ bg: 'rgba(0,0,0,0.9)' }}
       >
         <Container maxW="container.xl">
           <Flex justify="space-between" align="center" h="68px">
             <HStack spacing={8}>
-              <Image 
-                src="/lightrain-logo.svg" 
-                alt="LightRain" 
-                h="40px" 
-                cursor="pointer"
+              <HStack 
+                spacing={3} 
+                cursor="pointer" 
                 onClick={() => router.push('/')}
-              />
+                _hover={{ opacity: 0.8 }}
+                transition="opacity 0.2s"
+              >
+                <FaCloudRain size="32px" color="white" />
+                <Heading size="lg" color="white" fontWeight="bold">
+                  LightRain
+                </Heading>
+              </HStack>
             </HStack>
             <HStack spacing={4}>
               <InputGroup maxW="400px">
                 <Input
-                  placeholder="Search properties..."
+                  placeholder="Search"
                   bg="whiteAlpha.100"
                   border="none"
                   _hover={{ bg: 'whiteAlpha.200' }}
@@ -92,64 +87,54 @@ export default function Home() {
                 </InputRightElement>
               </InputGroup>
               <IconButton
-                aria-label="Notifications"
-                icon={<FaBell />}
+                aria-label="Coin Recharge"
+                icon={<FaCoins />}
                 variant="ghost"
                 color="white"
                 _hover={{ bg: 'whiteAlpha.200' }}
+                onClick={() => router.push('/coins')}
+              />
+              <IconButton
+                aria-label="Download App"
+                icon={<FaMobile />}
+                variant="ghost"
+                color="white"
+                _hover={{ bg: 'whiteAlpha.200' }}
+                onClick={() => router.push('/download')}
               />
               <Menu>
                 <MenuButton
                   as={IconButton}
-                  icon={<Avatar size="sm" icon={<FaUser />} />}
+                  icon={<FaUserCircle size="20px" />}
                   variant="ghost"
+                  color="white"
+                  bg="whiteAlpha.100"
                   _hover={{ bg: 'whiteAlpha.200' }}
+                  _active={{ bg: 'whiteAlpha.300' }}
                 />
                 <MenuList 
-                  bg="gray.900" 
-                  borderColor="whiteAlpha.200"
+                  bg="gray.800" 
+                  borderColor="gray.600"
                   boxShadow="xl"
                   py={2}
                 >
                   <MenuItem 
-                    _hover={{ bg: 'whiteAlpha.200' }}
-                    onClick={() => router.push('/profile')}
-                  >
-                    <HStack spacing={3}>
-                      <FaUser />
-                      <Text>Profile</Text>
-                    </HStack>
-                  </MenuItem>
-                  <MenuItem 
-                    _hover={{ bg: 'whiteAlpha.200' }}
-                    onClick={() => router.push('/account')}
-                  >
-                    <HStack spacing={3}>
-                      <FaCog />
-                      <Text>Account Settings</Text>
-                    </HStack>
-                  </MenuItem>
-                  <MenuItem 
-                    _hover={{ bg: 'whiteAlpha.200' }}
-                    onClick={() => router.push('/help')}
-                  >
-                    <HStack spacing={3}>
-                      <FaQuestionCircle />
-                      <Text>Help Center</Text>
-                    </HStack>
-                  </MenuItem>
-                  <MenuDivider borderColor="whiteAlpha.200" />
-                  <MenuItem 
-                    _hover={{ bg: 'whiteAlpha.200' }}
+                    bg="gray.800"
+                    color="white"
+                    _hover={{ bg: 'gray.700' }}
+                    _focus={{ bg: 'gray.700' }}
                     onClick={() => router.push('/login')}
                   >
                     <HStack spacing={3}>
                       <FaSignInAlt />
-                      <Text>Sign In</Text>
+                      <Text>Login</Text>
                     </HStack>
                   </MenuItem>
                   <MenuItem 
-                    _hover={{ bg: 'whiteAlpha.200' }}
+                    bg="gray.800"
+                    color="white"
+                    _hover={{ bg: 'gray.700' }}
+                    _focus={{ bg: 'gray.700' }}
                     onClick={() => router.push('/signup')}
                   >
                     <HStack spacing={3}>
@@ -167,8 +152,8 @@ export default function Home() {
       {/* Hero Section */}
       <Box
         position="relative"
-        h="80vh"
-        bgImage="url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920')"
+        h="100vh"
+        bgImage="url('/Trending GIF night city nyc christmas movies new york city 1994 miracle on 34th street skyline empire state building.gif')"
         bgSize="cover"
         bgPosition="center"
         _before={{
@@ -197,34 +182,34 @@ export default function Home() {
                 lineHeight="1.2"
                 textShadow="2px 2px 4px rgba(0,0,0,0.5)"
               >
-                Earn Solana
+                Go Live. Scroll. Repeat.
               </Heading>
               <Text fontSize="xl" color="gray.300" textShadow="1px 1px 2px rgba(0,0,0,0.5)">
-                Fast, secure, and travel tokenization on Solana.
+                Watch and create vertical livestreams. Swipe through moments, chat in real time, and discover creators in an immersive live experience.
               </Text>
               <HStack spacing={4}>
                 <Button
                   size="lg"
-                  leftIcon={<FaChartLine />}
-                  bg="blue.600"
-                  color="white"
-                  _hover={{ bg: 'blue.500' }}
-                  onClick={() => router.push('/dashboard')}
-                  px={8}
-                >
-                  Markets
+                  leftIcon={<FaPlay />}
+                bg="red.600"
+                color="white"
+                _hover={{ bg: 'red.500' }}
+                onClick={() => router.push('/for-you')}
+                px={8}
+              >
+                For You
                 </Button>
                 <Button
                   size="lg"
-                  leftIcon={<FaPlane />}
+                  leftIcon={<FaUser />}
                   variant="outline"
                   borderColor="whiteAlpha.400"
                   color="white"
                   _hover={{ bg: 'whiteAlpha.200', borderColor: 'white' }}
-                  onClick={() => router.push('/technology')}
+                  onClick={() => router.push('/explore')}
                   px={8}
                 >
-                  Travel
+                  Explore
                 </Button>
               </HStack>
             </VStack>
@@ -232,131 +217,116 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* Content Rows */}
-      <Box py={8} mt={-8}>
-        {contentRows.map((row, index) => (
-          <Box key={index} mb={8}>
-            <Container maxW="container.xl">
-              <Heading size="lg" mb={4} textShadow="1px 1px 2px rgba(0,0,0,0.5)">{row.title}</Heading>
-              <Flex position="relative" align="center">
-                <IconButton
-                  aria-label="Previous"
-                  icon={<FaChevronLeft />}
-                  position="absolute"
-                  left={0}
-                  zIndex={2}
-                  variant="ghost"
-                  color="white"
-                  _hover={{ bg: 'whiteAlpha.200' }}
-                  bg="rgba(0,0,0,0.5)"
-                />
-                <Flex overflowX="auto" gap={4} py={4} px={8} css={{
-                  '&::-webkit-scrollbar': { display: 'none' },
-                  scrollbarWidth: 'none',
-                }}>
-                  {row.items.map((item) => (
-                    <MotionBox
-                      key={item.id}
-                      minW="300px"
-                      h="200px"
-                      position="relative"
-                      borderRadius="md"
-                      overflow="hidden"
-                      cursor="pointer"
-                      onHoverStart={() => setHoveredItem(item.id)}
-                      onHoverEnd={() => setHoveredItem(null)}
-                      whileHover={{ scale: 1.1, zIndex: 2 }}
-                      transition={{ duration: 0.2 }}
-                      boxShadow="0 4px 6px rgba(0,0,0,0.1)"
-                      onClick={() => router.push(`/property/${item.id}`)}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        w="100%"
-                        h="100%"
-                        objectFit="cover"
-                        fallbackSrc="https://via.placeholder.com/300x200?text=Loading..."
-                      />
-                      <Box
-                        position="absolute"
-                        bottom={0}
-                        left={0}
-                        right={0}
-                        p={4}
-                        bg="linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)"
-                        opacity={hoveredItem === item.id ? 1 : 0}
-                        transition="opacity 0.2s"
-                      >
-                        <Text fontWeight="bold" fontSize="lg">{item.title}</Text>
-                        <Text fontSize="sm" color="gray.300">{item.description}</Text>
-                        <HStack mt={2} spacing={2}>
-                          <Button size="sm" leftIcon={<FaPlay />} colorScheme="whiteAlpha">
-                            View
-                          </Button>
-                          <Button size="sm" leftIcon={<FaInfoCircle />} variant="ghost">
-                            Details
-                          </Button>
-                        </HStack>
-                      </Box>
-                    </MotionBox>
-                  ))}
-                </Flex>
-                <IconButton
-                  aria-label="Next"
-                  icon={<FaChevronRight />}
-                  position="absolute"
-                  right={0}
-                  zIndex={2}
-                  variant="ghost"
-                  color="white"
-                  _hover={{ bg: 'whiteAlpha.200' }}
-                  bg="rgba(0,0,0,0.5)"
-                />
-              </Flex>
-            </Container>
-          </Box>
-        ))}
-      </Box>
       {/* Footer */}
-      <Box as="footer" bgGradient="linear(to-r, #1a1a1a, #232526 80%)" color="gray.300" py={12} mt={16} borderTopWidth="2px" borderColor="gray.300" boxShadow="0 -4px 24px 0 rgba(212,175,55,0.08)">
+      <Box as="footer" bg="gray.900" color="gray.300" py={16} borderTopWidth="1px" borderColor="gray.700">
         <Container maxW="container.xl">
-          <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align={{ base: 'flex-start', md: 'center' }} gap={12}>
-            {/* About & Brand */}
-            <VStack align="flex-start" spacing={4} maxW="340px">
-              <Heading size="md" color="gray.300" fontFamily="serif">LightRain</Heading>
-              <Link href="/about" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>About</Link>
-              <Link href="/whitepaper" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Whitepaper</Link>
-              <Link href="/tokenomics" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Tokenomics</Link>
-              <Link href="/governance" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Governance</Link>
+          <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={12} mb={12}>
+            {/* Company */}
+            <VStack align="flex-start" spacing={6}>
+              <Heading size="lg" color="white" fontWeight="bold">LightRain Live</Heading>
+              <Text color="gray.400" fontSize="sm" lineHeight="1.6">
+                The world's leading vertical livestreaming platform. Connect, create, and discover in real-time.
+              </Text>
+              <HStack spacing={4}>
+                <Link href="/about" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  About
+                </Link>
+                <Link href="/careers" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Careers
+                </Link>
+                <Link href="/press" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Press
+                </Link>
+              </HStack>
             </VStack>
-            {/* Investment Security */}
-            <VStack align="flex-start" spacing={2} maxW="260px">
-              <Heading size="sm" color="gray.300" fontFamily="serif">Investment Security</Heading>
-              <Link href="/security" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Security</Link>
+            
+            {/* Product */}
+            <VStack align="flex-start" spacing={6}>
+              <Heading size="md" color="white" fontWeight="semibold">Product</Heading>
+              <VStack align="flex-start" spacing={3}>
+                <Link href="/features" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Features
+                </Link>
+                <Link href="/studio" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Creator Studio
+                </Link>
+                <Link href="/analytics" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Analytics
+                </Link>
+                <Link href="/monetization" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Monetization
+                </Link>
+                <Link href="/api" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  API
+                </Link>
+              </VStack>
             </VStack>
-            {/* Technology */}
-            <VStack align="flex-start" spacing={2} maxW="260px">
-              <Heading size="sm" color="gray.300" fontFamily="serif">Cutting-Edge Technology</Heading>
-              <Link href="/technology" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Technology</Link>
+            
+            {/* Community */}
+            <VStack align="flex-start" spacing={6}>
+              <Heading size="md" color="white" fontWeight="semibold">Community</Heading>
+              <VStack align="flex-start" spacing={3}>
+                <Link href="/guidelines" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Community Guidelines
+                </Link>
+                <Link href="/safety" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Safety Center
+                </Link>
+                <Link href="/moderation" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Content Moderation
+                </Link>
+                <Link href="/transparency" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Transparency Report
+                </Link>
+                <Link href="/education" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Creator Education
+                </Link>
+              </VStack>
             </VStack>
-            {/* Regulatory Compliance */}
-            <VStack align="flex-start" spacing={2} maxW="260px">
-              <Heading size="sm" color="gray.300" fontFamily="serif">Regulatory Compliance</Heading>
-              <Link href="/compliance" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Compliance</Link>
+            
+            {/* Support */}
+            <VStack align="flex-start" spacing={6}>
+              <Heading size="md" color="white" fontWeight="semibold">Support</Heading>
+              <VStack align="flex-start" spacing={3}>
+                <Link href="/help" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Help Center
+                </Link>
+                <Link href="/contact" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Contact Us
+                </Link>
+                <Link href="/status" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  System Status
+                </Link>
+                <Link href="/feedback" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Feedback
+                </Link>
+                <Link href="/bug-report" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                  Bug Reports
+                </Link>
+              </VStack>
             </VStack>
-            {/* Contact */}
-            <VStack align="flex-start" spacing={2} maxW="220px">
-              <Heading size="sm" color="gray.300" fontFamily="serif">Contact</Heading>
-              <Link href="mailto:invest@lightrain.com" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Email</Link>
-              <Link href="tel:+442012345678" color="gray.300" fontSize="sm" _hover={{ color: 'gray.200' }}>Phone</Link>
-              <Text color="gray.300" fontSize="sm">London, UK</Text>
-            </VStack>
-          </Flex>
-          <Box mt={10} borderTopWidth="1px" borderColor="gray.300" pt={6} textAlign="center">
-            <Text color="gray.500" fontSize="xs">
-              © {new Date().getFullYear()} LightRain. All rights reserved. This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Investments are subject to risk, including loss of principal. Please consult your financial advisor before investing.
-            </Text>
+          </Grid>
+          
+          <Box borderTopWidth="1px" borderColor="gray.700" pt={8}>
+            <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center" gap={6}>
+              <Text color="gray.500" fontSize="sm">
+                © {new Date().getFullYear()} LightRain Live, Inc. All rights reserved.
+              </Text>
+              <HStack spacing={8}>
+                <Link href="/privacy" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                  Terms of Service
+                </Link>
+                <Link href="/cookies" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                  Cookie Policy
+                </Link>
+                <Link href="/accessibility" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                  Accessibility
+                </Link>
+              </HStack>
+            </Flex>
           </Box>
         </Container>
       </Box>

@@ -28,10 +28,10 @@ const MotionBox = motion(Box);
 // Sample property data - in a real app, this would come from an API
 const propertyData = {
   1: {
-    title: "Luxury Villa",
-    description: "Premium beachfront property with stunning ocean views",
+    title: "Creator Loft Studio",
+    description: "Live content hub with pro lighting and sound-ready space",
     price: "$2,500,000",
-    location: "Miami Beach, FL",
+    location: "Downtown, LA",
     size: "4,500 sq ft",
     bedrooms: 5,
     bathrooms: 4.5,
@@ -43,12 +43,12 @@ const propertyData = {
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
     ],
     features: [
-      "Private Pool",
-      "Smart Home System",
-      "Wine Cellar",
-      "Home Theater",
-      "Gourmet Kitchen",
-      "Ocean View",
+      "4K Camera Ready",
+      "Acoustic Treatment",
+      "RGB Lighting",
+      "Dual PC Setup",
+      "Creator Lounge",
+      "High-Speed Fiber",
     ],
     marketTrends: {
       currentValue: "$2,500,000",
@@ -119,7 +119,7 @@ export default function PropertyDetails() {
               colorScheme="red"
               onClick={() => router.push('/signup')}
             >
-              Invest Now
+              Follow Creator
             </Button>
           </VStack>
         </Container>
@@ -161,7 +161,7 @@ export default function PropertyDetails() {
 
               {/* Property Features */}
               <Box>
-                <Heading size="lg" mb={6}>Property Features</Heading>
+                <Heading size="lg" mb={6}>Stream Setup Features</Heading>
                 <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap={4}>
                   {property.features.map((feature, index) => (
                     <HStack key={index} spacing={3}>
@@ -208,19 +208,19 @@ export default function PropertyDetails() {
                 border="1px solid"
                 borderColor="whiteAlpha.200"
               >
-                <Heading size="md" mb={6}>Market Trends</Heading>
+                <Heading size="md" mb={6}>Live Stats</Heading>
                 <VStack spacing={6} align="stretch">
                   <Stat>
-                    <StatLabel>Current Value</StatLabel>
-                    <StatNumber>{property.marketTrends.currentValue}</StatNumber>
+                    <StatLabel>Viewers</StatLabel>
+                    <StatNumber>12.3K</StatNumber>
                   </Stat>
                   <Stat>
-                    <StatLabel>Monthly Change</StatLabel>
-                    <StatNumber color="green.400">{property.marketTrends.monthlyChange}</StatNumber>
+                    <StatLabel>Likes</StatLabel>
+                    <StatNumber color="green.400">389K</StatNumber>
                   </Stat>
                   <Stat>
-                    <StatLabel>Yearly Change</StatLabel>
-                    <StatNumber color="green.400">{property.marketTrends.yearlyChange}</StatNumber>
+                    <StatLabel>New Followers</StatLabel>
+                    <StatNumber color="green.400">+2.1K</StatNumber>
                   </Stat>
                 </VStack>
               </Box>
@@ -234,9 +234,9 @@ export default function PropertyDetails() {
                 borderColor="whiteAlpha.200"
               >
                 <VStack spacing={6} align="stretch">
-                  <Heading size="md">Ready to Invest?</Heading>
+                  <Heading size="md">Join the Stream</Heading>
                   <Text color="gray.400">
-                    Join LightRain to start investing in premium real estate properties.
+                    Follow to get notified when this creator goes live. Join chat, send gifts, and be part of the moment.
                   </Text>
                   <Button
                     size="lg"
