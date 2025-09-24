@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text, Button, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Grid } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, Button, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Grid, Link as ChakraLink } from '@chakra-ui/react';
 import Link from 'next/link';
 import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane, FaCoins, FaMobile, FaUserCircle, FaCloudRain } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -228,15 +228,15 @@ export default function Home() {
                 The world's leading vertical livestreaming platform. Connect, create, and discover in real-time.
               </Text>
               <HStack spacing={4}>
-                <Link href="/about" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                <ChakraLink href="/about" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   About
-                </Link>
-                <Link href="/careers" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/careers" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Careers
-                </Link>
-                <Link href="/press" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/press" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Press
-                </Link>
+                </ChakraLink>
               </HStack>
             </VStack>
             
@@ -244,21 +244,21 @@ export default function Home() {
             <VStack align="flex-start" spacing={6}>
               <Heading size="md" color="white" fontWeight="semibold">Product</Heading>
               <VStack align="flex-start" spacing={3}>
-                <Link href="/features" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                <ChakraLink href="/features" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Features
-                </Link>
-                <Link href="/studio" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/studio" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Creator Studio
-                </Link>
-                <Link href="/analytics" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/analytics" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Analytics
-                </Link>
-                <Link href="/monetization" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/monetization" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Monetization
-                </Link>
-                <Link href="/api" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/api" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   API
-                </Link>
+                </ChakraLink>
               </VStack>
             </VStack>
             
@@ -266,21 +266,21 @@ export default function Home() {
             <VStack align="flex-start" spacing={6}>
               <Heading size="md" color="white" fontWeight="semibold">Community</Heading>
               <VStack align="flex-start" spacing={3}>
-                <Link href="/guidelines" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                <ChakraLink href="/guidelines" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Community Guidelines
-                </Link>
-                <Link href="/safety" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/safety" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Safety Center
-                </Link>
-                <Link href="/moderation" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/moderation" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Content Moderation
-                </Link>
-                <Link href="/transparency" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/transparency" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Transparency Report
-                </Link>
-                <Link href="/education" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/education" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Creator Education
-                </Link>
+                </ChakraLink>
               </VStack>
             </VStack>
             
@@ -288,21 +288,21 @@ export default function Home() {
             <VStack align="flex-start" spacing={6}>
               <Heading size="md" color="white" fontWeight="semibold">Support</Heading>
               <VStack align="flex-start" spacing={3}>
-                <Link href="/help" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                <ChakraLink href="/help" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Help Center
-                </Link>
-                <Link href="/contact" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/contact" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Contact Us
-                </Link>
-                <Link href="/status" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/status" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   System Status
-                </Link>
-                <Link href="/feedback" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/feedback" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Feedback
-                </Link>
-                <Link href="/bug-report" style={{ color: '#9CA3AF', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#9CA3AF'}>
+                </ChakraLink>
+                <ChakraLink href="/bug-report" color="gray.400" fontSize="sm" _hover={{ color: 'white' }}>
                   Bug Reports
-                </Link>
+                </ChakraLink>
               </VStack>
             </VStack>
           </Grid>
@@ -313,18 +313,18 @@ export default function Home() {
                 © {new Date().getFullYear()} LightRain Live, Inc. All rights reserved.
               </Text>
               <HStack spacing={8}>
-                <Link href="/privacy" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                <ChakraLink href="/privacy" color="gray.500" fontSize="sm" _hover={{ color: 'white' }}>
                   Privacy Policy
-                </Link>
-                <Link href="/terms" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                </ChakraLink>
+                <ChakraLink href="/terms" color="gray.500" fontSize="sm" _hover={{ color: 'white' }}>
                   Terms of Service
-                </Link>
-                <Link href="/cookies" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                </ChakraLink>
+                <ChakraLink href="/cookies" color="gray.500" fontSize="sm" _hover={{ color: 'white' }}>
                   Cookie Policy
-                </Link>
-                <Link href="/accessibility" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.color = 'white'} onMouseLeave={(e) => e.target.style.color = '#6B7280'}>
+                </ChakraLink>
+                <ChakraLink href="/accessibility" color="gray.500" fontSize="sm" _hover={{ color: 'white' }}>
                   Accessibility
-                </Link>
+                </ChakraLink>
               </HStack>
             </Flex>
           </Box>

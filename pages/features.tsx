@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Heading, Text, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Link as ChakraLink, Grid, Button } from '@chakra-ui/react';
 import Link from 'next/link';
-import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane, FaCoins, FaMobile, FaUserCircle, FaVideo, FaComments, FaGift, FaShield, FaRocket } from 'react-icons/fa';
+import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane, FaCoins, FaMobile, FaUserCircle, FaVideo, FaComments, FaGift, FaLock, FaRocket } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -28,7 +28,7 @@ export default function Features() {
       description: "Support your favorite creators with virtual gifts and monetization features."
     },
     {
-      icon: FaShield,
+      icon: FaLock,
       title: "Advanced Safety",
       description: "AI-powered content moderation and comprehensive safety tools."
     },
@@ -248,7 +248,7 @@ export default function Features() {
                     {feature.title === "Vertical Livestreaming" && <FaVideo size="24px" />}
                     {feature.title === "Real-time Chat" && <FaComments size="24px" />}
                     {feature.title === "Virtual Gifts" && <FaGift size="24px" />}
-                    {feature.title === "Advanced Safety" && <FaShield size="24px" />}
+                    {feature.title === "Advanced Safety" && <FaLock size="24px" />}
                     {feature.title === "Creator Tools" && <FaRocket size="24px" />}
                     {feature.title === "Smart Discovery" && <FaChartLine size="24px" />}
                   </Box>

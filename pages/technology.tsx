@@ -1,5 +1,5 @@
 import { Box, Container, Heading, Text, VStack, Grid, GridItem, Flex, useColorModeValue, Button } from '@chakra-ui/react';
-import { FaArrowLeft, FaHotel, FaPlane, FaShieldAlt, FaLeaf } from 'react-icons/fa';
+import { FaArrowLeft, FaHotel, FaPlane, FaLock, FaLeaf } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

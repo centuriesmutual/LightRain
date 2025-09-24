@@ -302,7 +302,7 @@ console.log(user);`;
                 <Heading size="md" mb={4} color="red.500">User Management</Heading>
                 <VStack align="start" spacing={2}>
                   <Text color="gray.300">GET /v1/users/me</Text>
-                  <Text color="gray.300">GET /v1/users/{id}</Text>
+                  <Text color="gray.300">GET /v1/users/&#123;id&#125;</Text>
                   <Text color="gray.300">PUT /v1/users/me</Text>
                   <Text color="gray.300">GET /v1/users/me/followers</Text>
                 </VStack>
@@ -311,8 +311,8 @@ console.log(user);`;
                 <Heading size="md" mb={4} color="red.500">Stream Data</Heading>
                 <VStack align="start" spacing={2}>
                   <Text color="gray.300">GET /v1/streams/live</Text>
-                  <Text color="gray.300">GET /v1/streams/{id}</Text>
-                  <Text color="gray.300">GET /v1/streams/{id}/chat</Text>
+                  <Text color="gray.300">GET /v1/streams/&#123;id&#125;</Text>
+                  <Text color="gray.300">GET /v1/streams/&#123;id&#125;/chat</Text>
                   <Text color="gray.300">POST /v1/streams</Text>
                 </VStack>
               </Box>
@@ -331,7 +331,7 @@ console.log(user);`;
                   <Text color="gray.300">GET /v1/content/trending</Text>
                   <Text color="gray.300">GET /v1/content/search</Text>
                   <Text color="gray.300">POST /v1/content/upload</Text>
-                  <Text color="gray.300">DELETE /v1/content/{id}</Text>
+                  <Text color="gray.300">DELETE /v1/content/&#123;id&#125;</Text>
                 </VStack>
               </Box>
             </Grid>

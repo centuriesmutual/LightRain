@@ -1,5 +1,5 @@
 import { Box, Container, Heading, Text, VStack, HStack, Image, Flex, IconButton, useColorModeValue, Avatar, Menu, MenuButton, MenuList, MenuItem, InputGroup, Input, InputRightElement, MenuDivider, Link, Grid, Button } from '@chakra-ui/react';
-import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane, FaCoins, FaMobile, FaUserCircle, FaShield, FaHeart, FaUsers, FaExclamationTriangle } from 'react-icons/fa';
+import { FaPlay, FaInfoCircle, FaChevronLeft, FaChevronRight, FaSearch, FaBell, FaUser, FaCog, FaQuestionCircle, FaSignInAlt, FaUserPlus, FaChartLine, FaPlane, FaCoins, FaMobile, FaUserCircle, FaLock, FaHeart, FaUsers, FaExclamationTriangle } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -17,7 +17,7 @@ export default function Guidelines() {
       examples: ["Use inclusive language", "Listen to different perspectives", "Be patient with newcomers"]
     },
     {
-      icon: FaShield,
+      icon: FaLock,
       title: "Keep It Safe",
       description: "Help us maintain a safe environment for everyone. Report harmful content and behavior.",
       examples: ["No harassment or bullying", "Respect privacy boundaries", "Report dangerous content"]
@@ -289,7 +289,7 @@ export default function Guidelines() {
             <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={8}>
               <Box textAlign="center">
                 <Box w="80px" h="80px" bg="red.500" borderRadius="full" mx="auto" mb={6} display="flex" alignItems="center" justifyContent="center">
-                  <FaShield size="32px" />
+                  <FaLock size="32px" />
                 </Box>
                 <Heading size="md" mb={4}>Automated Detection</Heading>
                 <Text color="gray.300">AI-powered systems help identify policy violations and harmful content in real-time.</Text>
